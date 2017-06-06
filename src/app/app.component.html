@@ -1,3 +1,56 @@
-<h1>
-  {{title}}
-</h1>
+<div fxFlexFill fxLayout="row" fxLayoutAlign="center" fullscreen>
+
+  <div fxFlex fxLayout="column" fxLayoutAlign="center" *ngIf="!result" style="margin-top:100px;">
+
+    <img style="width:200px;margin:auto;" md-image src="assets/img/hanzo.png">
+    <h1 fxFlex *ngIf="!spinner1 && !spinner2 && !spinner3" class="auto_margin">Should you pick Hanzo?</h1>
+    <md-input-container *ngIf="!spinner1 && !spinner2 && !spinner3" #input style="width:200px;" class="auto_margin" color="accent" required>
+      <input mdInput placeholder="Enter Username" value="">
+    </md-input-container>
+    <button md-raised-button style="margin:auto;width:100px;" *ngIf="!spinner1 && !spinner2 && !spinner3" color="primary" (click)="calculate()">
+      Calculate
+    </button>
+
+    <div fxFlex class="auto_margin">
+      <div class="auto_margin" *ngIf="spinner1">
+        <md-spinner class="auto_margin" color="primary"></md-spinner>
+        <p style="font-size:20px;" *ngIf="spinner1 && !spinner2 && !spinner3" class="pulsate auto_margin">Fetching data..</p>
+      </div>
+      <div class="auto_margin" *ngIf="spinner2">
+        <md-spinner class="auto_margin" color="accent"></md-spinner>
+        <p style="font-size:20px;" *ngIf="!spinner1 && spinner2 && !spinner3" class="pulsate auto_margin">Calculating pro level..</p>
+      </div>
+      <div class="auto_margin" *ngIf="spinner3">
+        <md-spinner class="auto_margin" color="warn"></md-spinner>
+        <p style="font-size:20px;" *ngIf="!spinner1 && !spinner2 && spinner3" class="pulsate auto_margin">Finalizing..</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div fxFlex fxLayout="column" fxLayoutAlign="center" *ngIf="result">
+
+    <div class="auto_margin">
+      <div class="auto_margin" *ngIf="spinner1">
+        <h1 *ngIf="spinner1 && !spinner2 && !spinner3" class="auto_margin">
+          No.
+        </h1>
+      </div>
+      <div class="auto_margin" *ngIf="spinner2">
+        <h1 *ngIf="!spinner1 && spinner2 && !spinner3" class="auto_margin">
+          Don't be that guy/gal.
+        </h1>
+      </div>
+      <div class="auto_margin" *ngIf="spinner3">
+        <h1 *ngIf="!spinner1 && !spinner2 && spinner3" class="auto_margin">
+          Be like Reinheart! Be a team player!
+        </h1>
+      </div>
+    </div>
+
+    <button style="margin:auto;width:100px;" md-raised-button *ngIf="done" color="primary" (click)="reset()">
+      Reset
+    </button>
+
+  </div>
+</div>
