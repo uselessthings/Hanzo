@@ -52,21 +52,28 @@ var AppComponent = (function () {
     function AppComponent() {
         this.result = false;
         this.done = false;
+        this.color = "accent";
+        this.spin = false;
         this.spinner1 = false;
         this.spinner2 = false;
         this.spinner3 = false;
     }
     AppComponent.prototype.calculate = function () {
         var _this = this;
+        this.spin = true;
         this.spinner1 = !this.spinner1;
         setTimeout(function () {
+            _this.color = "primary";
             _this.spinner1 = !_this.spinner1;
             _this.spinner2 = !_this.spinner2;
             setTimeout(function () {
+                _this.color = "warn";
                 _this.spinner2 = !_this.spinner2;
                 _this.spinner3 = !_this.spinner3;
                 setTimeout(function () {
                     _this.spinner3 = !_this.spinner3;
+                    _this.spin = false;
+                    _this.color = "accent";
                     _this.result = !_this.result;
                     _this.msg();
                 }, 5000);
@@ -208,7 +215,7 @@ module.exports = module.exports.toString();
 /***/ 193:
 /***/ (function(module, exports) {
 
-module.exports = "<div fxFlexFill fxLayout=\"row\" fxLayoutAlign=\"center\" fullscreen>\n\n  <div fxFlex fxLayout=\"column\" fxLayoutAlign=\"center\" *ngIf=\"!result\" style=\"margin-top:100px;\">\n\n    <img style=\"width:200px;margin:auto;\" md-image src=\"assets/img/hanzo.png\">\n    <h1 fxFlex *ngIf=\"!spinner1 && !spinner2 && !spinner3\" class=\"auto_margin\">Should you pick Hanzo?</h1>\n    <md-input-container *ngIf=\"!spinner1 && !spinner2 && !spinner3\" #input style=\"width:200px;\" class=\"auto_margin\" color=\"accent\" required>\n      <input mdInput placeholder=\"Enter Username\" value=\"\">\n    </md-input-container>\n    <button md-raised-button style=\"margin:auto;width:100px;\" *ngIf=\"!spinner1 && !spinner2 && !spinner3\" color=\"primary\" (click)=\"calculate()\">\n      Calculate\n    </button>\n\n    <div fxFlex class=\"auto_margin\">\n      <div class=\"auto_margin\" *ngIf=\"spinner1\">\n        <md-spinner class=\"auto_margin\" color=\"primary\"></md-spinner>\n        <p style=\"font-size:20px;\" *ngIf=\"spinner1 && !spinner2 && !spinner3\" class=\"pulsate auto_margin\">Fetching Data..</p>\n      </div>\n      <div class=\"auto_margin\" *ngIf=\"spinner2\">\n        <md-spinner class=\"auto_margin\" color=\"accent\"></md-spinner>\n        <p style=\"font-size:20px;\" *ngIf=\"!spinner1 && spinner2 && !spinner3\" class=\"pulsate auto_margin\">Calculating Pro-level..</p>\n      </div>\n      <div class=\"auto_margin\" *ngIf=\"spinner3\">\n        <md-spinner class=\"auto_margin\" color=\"warn\"></md-spinner>\n        <p style=\"font-size:20px;\" *ngIf=\"!spinner1 && !spinner2 && spinner3\" class=\"pulsate auto_margin\">Finalizing Results..</p>\n      </div>\n    </div>\n\n  </div>\n\n  <div fxFlex fxLayout=\"column\" fxLayoutAlign=\"center\" *ngIf=\"result\">\n\n    <div class=\"auto_margin\">\n      <div class=\"auto_margin\" *ngIf=\"spinner1\" style=\"text-align:center;\">\n        <h1 *ngIf=\"spinner1 && !spinner2 && !spinner3\" class=\"auto_margin\">\n          No.\n        </h1>\n      </div>\n      <div class=\"auto_margin\" *ngIf=\"spinner2\" style=\"text-align:center;\">\n        <h1 *ngIf=\"!spinner1 && spinner2 && !spinner3\" class=\"auto_margin\">\n          Don't be that guy/gal.\n        </h1>\n      </div>\n      <div class=\"auto_margin\" *ngIf=\"spinner3\" style=\"text-align:center;\">\n        <h1 *ngIf=\"!spinner1 && !spinner2 && spinner3\" class=\"auto_margin\">\n          Be like Reinhardt! Be a team player!\n        </h1>\n      </div>\n    </div>\n\n    <button style=\"margin:auto;width:100px;\" md-raised-button *ngIf=\"done\" color=\"primary\" (click)=\"reset()\">\n      Reset\n    </button>\n\n  </div>\n</div>\n"
+module.exports = "<div fxFlexFill fxLayout=\"row\" fxLayoutAlign=\"center\" fullscreen>\n\n  <div fxFlex fxLayout=\"column\" fxLayoutAlign=\"center\" *ngIf=\"!result\" style=\"margin-top:100px;\">\n\n    <img style=\"width:200px;margin:auto;\" md-image src=\"assets/img/hanzo.png\">\n    <h1 fxFlex *ngIf=\"!spinner1 && !spinner2 && !spinner3\" class=\"auto_margin\">Should you pick Hanzo?</h1>\n    <md-input-container *ngIf=\"!spinner1 && !spinner2 && !spinner3\" #input style=\"width:200px;\" class=\"auto_margin\" color=\"accent\" required>\n      <input mdInput placeholder=\"Enter Username\" value=\"\">\n    </md-input-container>\n    <button md-raised-button style=\"margin:auto;width:100px;\" *ngIf=\"!spinner1 && !spinner2 && !spinner3\" color=\"primary\" (click)=\"calculate()\">\n      Calculate\n    </button>\n\n    <div fxFlex class=\"auto_margin\">\n      <md-spinner *ngIf=\"spin\" class=\"auto_margin\" color=\"{{ color }}\"></md-spinner>\n      <div class=\"auto_margin\" *ngIf=\"spinner1\">\n        <p style=\"font-size:20px;\" *ngIf=\"spinner1 && !spinner2 && !spinner3\" class=\"pulsate auto_margin\">Fetching Data..</p>\n      </div>\n      <div class=\"auto_margin\" *ngIf=\"spinner2\">\n        <p style=\"font-size:20px;\" *ngIf=\"!spinner1 && spinner2 && !spinner3\" class=\"pulsate auto_margin\">Calculating Pro-level..</p>\n      </div>\n      <div class=\"auto_margin\" *ngIf=\"spinner3\">\n        <p style=\"font-size:20px;\" *ngIf=\"!spinner1 && !spinner2 && spinner3\" class=\"pulsate auto_margin\">Finalizing Results..</p>\n      </div>\n    </div>\n\n  </div>\n\n  <div fxFlex fxLayout=\"column\" fxLayoutAlign=\"center\" *ngIf=\"result\">\n\n    <div class=\"auto_margin\">\n      <div class=\"auto_margin\" *ngIf=\"spinner1\" style=\"text-align:center;\">\n        <h1 *ngIf=\"spinner1 && !spinner2 && !spinner3\" class=\"auto_margin\">\n          No.\n        </h1>\n      </div>\n      <div class=\"auto_margin\" *ngIf=\"spinner2\" style=\"text-align:center;\">\n        <h1 *ngIf=\"!spinner1 && spinner2 && !spinner3\" class=\"auto_margin\">\n          Don't be that guy/gal.\n        </h1>\n      </div>\n      <div class=\"auto_margin\" *ngIf=\"spinner3\" style=\"text-align:center;\">\n        <h1 *ngIf=\"!spinner1 && !spinner2 && spinner3\" class=\"auto_margin\">\n          Be like Reinhardt! Be a team player!\n        </h1>\n      </div>\n    </div>\n\n    <button style=\"margin:auto;width:100px;\" md-raised-button *ngIf=\"done\" color=\"primary\" (click)=\"reset()\">\n      Reset\n    </button>\n\n  </div>\n</div>\n"
 
 /***/ }),
 

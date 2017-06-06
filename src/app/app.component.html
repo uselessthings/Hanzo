@@ -12,16 +12,14 @@
     </button>
 
     <div fxFlex class="auto_margin">
+      <md-spinner *ngIf="spin" class="auto_margin" color="{{ color }}"></md-spinner>
       <div class="auto_margin" *ngIf="spinner1">
-        <md-spinner class="auto_margin" color="primary"></md-spinner>
         <p style="font-size:20px;" *ngIf="spinner1 && !spinner2 && !spinner3" class="pulsate auto_margin">Fetching Data..</p>
       </div>
       <div class="auto_margin" *ngIf="spinner2">
-        <md-spinner class="auto_margin" color="accent"></md-spinner>
         <p style="font-size:20px;" *ngIf="!spinner1 && spinner2 && !spinner3" class="pulsate auto_margin">Calculating Pro-level..</p>
       </div>
       <div class="auto_margin" *ngIf="spinner3">
-        <md-spinner class="auto_margin" color="warn"></md-spinner>
         <p style="font-size:20px;" *ngIf="!spinner1 && !spinner2 && spinner3" class="pulsate auto_margin">Finalizing Results..</p>
       </div>
     </div>
