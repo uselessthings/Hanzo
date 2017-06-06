@@ -43,12 +43,12 @@
         <h1 *ngIf="!spinner1 && !spinner2 && spinner3" class="auto_margin">
           Be like Reinhardt! Be a team player!
         </h1>
+        <button style="margin:auto;width:100px;" md-raised-button *ngIf="done" color="primary" (click)="reset()">
+          Reset
+        </button>
       </div>
     </div>
 
-    <button style="margin:auto;width:100px;" md-raised-button *ngIf="done" color="primary" (click)="reset()">
-      Reset
-    </button>
 
   </div>
 </div>

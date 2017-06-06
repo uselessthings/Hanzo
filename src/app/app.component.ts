@@ -46,14 +46,16 @@ export class AppComponent {
         this.spinner2 = !this.spinner2;
         this.spinner3 = !this.spinner3;
         setTimeout(() => {
-          this.spinner3 = !this.spinner3;
           this.done = true;
-        }, 5000);
-      }, 5000);
-    }, 5000);
+        }, 4000);
+      }, 4000);
+    }, 4000);
   }
 
   reset() {
+    this.spinner1 = false;
+    this.spinner2 = false;
+    this.spinner3 = false;
     this.result = false;
     this.done = false;
   }
