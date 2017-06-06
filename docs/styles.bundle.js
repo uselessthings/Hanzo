@@ -330,7 +330,7 @@ exports = module.exports = __webpack_require__(38)(false);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/icon?family=Material+Icons);", ""]);
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n\n::-webkit-scrollbar {\n    display: none;\n}\n\nhtml, body {\n    height: 100%;\n}\nbody {\n    margin: 0;\n    background-color: black;\n}\n\n.auto_margin {\n  margin: auto;\n}\n\n.pulsate {\n    -webkit-animation: pulsate 3s ease-out;\n    -webkit-animation-iteration-count: infinite;\n    opacity: 0.5;\n}\n@-webkit-keyframes pulsate {\n    0% {\n        opacity: 0.5;\n    }\n    50% {\n        opacity: 1.0;\n    }\n    100% {\n        opacity: 0.5;\n    }\n}\n", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n\n::-webkit-scrollbar {\n    display: none;\n}\n\nhtml, body {\n    height: 100%;\n}\nbody {\n    margin: 0;\n    background-color: black;\n}\n\na {\n  color:white;\n  text-decoration: underline;\n}\n\na:hover {\n  text-decoration: none;\n}\n\n.auto_margin {\n  margin: auto;\n}\n\n.pulsate {\n    -webkit-animation: pulsate 3s ease-out;\n    -webkit-animation-iteration-count: infinite;\n    opacity: 0.5;\n}\n@-webkit-keyframes pulsate {\n    0% {\n        opacity: 0.5;\n    }\n    50% {\n        opacity: 1.0;\n    }\n    100% {\n        opacity: 0.5;\n    }\n}\n", ""]);
 
 // exports
 
