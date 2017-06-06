@@ -21,6 +21,16 @@ $candy-app-theme: mat-dark-theme($candy-app-primary, $candy-app-accent, $candy-a
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,800);
+$font-open: 'Open Sans', sans-serif;
+
+//colors
+$color-snow: #fff;
+
+body {
+  color: $color-snow;
+  font-family: $font-open;
+}
 
 @include angular-material-theme($candy-app-theme);
 

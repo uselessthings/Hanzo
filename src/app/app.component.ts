@@ -15,6 +15,9 @@ export class AppComponent {
   spinner2 = false;
   spinner3 = false;
 
+  loadDelay = 5000;
+  msgDelay = 4000;
+
   calculate() {
     this.spin = true;
     this.spinner1 = !this.spinner1;
@@ -32,9 +35,9 @@ export class AppComponent {
           this.color = "accent";
           this.result = !this.result;
           this.msg();
-        }, 5000);
-      }, 5000);
-    }, 5000);
+        }, this.loadDelay);
+      }, this.loadDelay);
+    }, this.loadDelay);
   }
 
   msg() {
@@ -47,9 +50,9 @@ export class AppComponent {
         this.spinner3 = !this.spinner3;
         setTimeout(() => {
           this.done = true;
-        }, 4000);
-      }, 4000);
-    }, 4000);
+        }, this.msgDelay);
+      }, this.msgDelay);
+    }, this.msgDelay);
   }
 
   reset() {
