@@ -14,7 +14,7 @@
     <div fxFlex class="auto_margin">
       <div class="auto_margin" *ngIf="spinner1">
         <md-spinner class="auto_margin" color="primary"></md-spinner>
-        <p style="font-size:20px;" *ngIf="spinner1 && !spinner2 && !spinner3" class="pulsate auto_margin">Fetching data..</p>
+        <p style="font-size:20px;" *ngIf="spinner1 && !spinner2 && !spinner3" class="pulsate auto_margin">Fetching Data..</p>
       </div>
       <div class="auto_margin" *ngIf="spinner2">
         <md-spinner class="auto_margin" color="accent"></md-spinner>
@@ -22,7 +22,7 @@
       </div>
       <div class="auto_margin" *ngIf="spinner3">
         <md-spinner class="auto_margin" color="warn"></md-spinner>
-        <p style="font-size:20px;" *ngIf="!spinner1 && !spinner2 && spinner3" class="pulsate auto_margin">Finalizing..</p>
+        <p style="font-size:20px;" *ngIf="!spinner1 && !spinner2 && spinner3" class="pulsate auto_margin">Finalizing Results..</p>
       </div>
     </div>
 
@@ -31,17 +31,17 @@
   <div fxFlex fxLayout="column" fxLayoutAlign="center" *ngIf="result">
 
     <div class="auto_margin">
-      <div class="auto_margin" *ngIf="spinner1">
+      <div class="auto_margin" *ngIf="spinner1" style="text-align:center;">
         <h1 *ngIf="spinner1 && !spinner2 && !spinner3" class="auto_margin">
           No.
         </h1>
       </div>
-      <div class="auto_margin" *ngIf="spinner2">
+      <div class="auto_margin" *ngIf="spinner2" style="text-align:center;">
         <h1 *ngIf="!spinner1 && spinner2 && !spinner3" class="auto_margin">
           Don't be that guy/gal.
         </h1>
       </div>
-      <div class="auto_margin" *ngIf="spinner3">
+      <div class="auto_margin" *ngIf="spinner3" style="text-align:center;">
         <h1 *ngIf="!spinner1 && !spinner2 && spinner3" class="auto_margin">
           Be like Reinhardt! Be a team player!
         </h1>
